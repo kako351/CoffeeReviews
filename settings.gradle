@@ -11,6 +11,45 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        libs {
+            version("core-ktx", "1.8.0")
+            library("core-ktx", "androidx.core", "core-ktx").versionRef("core-ktx")
+
+            version("lifecycle", "2.3.1")
+            library("lifecycle-runtime-ktx", "androidx.lifecycle", "lifecycle-runtime-ktx").versionRef("lifecycle")
+
+            version("activity", "1.5.1")
+            library("activity", "androidx.activity", "activity-compose").versionRef("activity")
+
+            version("compose", "1.3.0")
+            version("compose-material3", "1.0.1")
+            library("compose-ui", "androidx.compose.ui", "ui").versionRef("compose")
+            library("compose-graphics", "androidx.compose.ui", "ui-graphics").versionRef("compose")
+            library("compose-tooling-preview", "androidx.compose.ui", "ui-tooling-preview").versionRef("compose")
+            library("compose-material3", "androidx.compose.material3", "material3").versionRef("compose-material3")
+            bundle("compose", ["compose-ui", "compose-graphics", "compose-tooling-preview", "compose-material3"])
+
+            // for debug build type
+            library("debug-compose-tooling", "androidx.compose.ui", "ui-tooling").versionRef("compose")
+            library("debug-compose-ui-test-manifest", "androidx.compose.ui", "ui-test-manifest").versionRef("compose")
+            bundle("debug-compose", ["debug-compose-tooling", "debug-compose-ui-test-manifest"])
+
+            // for test
+            version("junit", "4.13.2")
+            library("junit", "junit", "junit").versionRef("junit")
+
+            // for android test
+            version("junit-ext", "1.1.3")
+            library("junit-ext", "androidx.test.ext", "junit").versionRef("junit-ext")
+
+            version("esspresso", "3.4.0")
+            library("esspresso", "androidx.test.espresso", "espresso-core").versionRef("esspresso")
+
+            version("compose-ui-test-junit4", "3.4.0")
+            library("compose-ui-test-junit4", "androidx.compose.ui", "ui-test-junit4").versionRef("esspresso")
+        }
+    }
 }
 rootProject.name = "CoffeeReviews"
 include ':app'
